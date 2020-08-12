@@ -1,0 +1,55 @@
+
+<!-- Her indsættes en liste af tweets. Husk at design html i denne fil og css i tweets.component.css -->
+
+<div class="bg-container">
+
+    <div class="search-container">
+        <input type="text" name="search-input" class="search-input" placeholder="Search for keyword..." #searchVal (keyup)="searchValue(searchVal.value)">
+        <span class="remove-search">
+            <i class="fa fa-trash" aria-hidden="true" title="Reset Search" (click)="resetSearch()"></i>
+        </span>
+
+        <div class="speciel-search search-container">
+            <label for="month-selecter">Show all from month</label>
+            <select id="month-selecter" class="search-input" #monthVal (change)="searchMonth(monthVal.value)">
+                <option value="0">January</option>
+                <option value="1">Feburary</option>
+                <option value="2">Marts</option>
+                <option value="3">April</option>
+                <option value="4">May</option>
+                <option value="5">June</option>
+                <option value="6">July</option>
+                <option value="7">August</option>
+                <option value="8">September</option>
+                <option value="9">Oktober</option>
+                <option value="10">November</option>
+                <option value="11">December</option>
+            </select>
+        </div>
+        
+    </div>
+
+    <div class="all-tweets-con">
+        <div *ngFor="let tweet of twat" class="tweet-con">
+            <div class="tweet-heading">
+                <span class="image-container">
+                    <img src="/src/assets/Trump-icon.jpg" class="profile-img">
+                </span>
+                <span class="tweet-name">Donald J. Trump </span> 
+                <span class="tweet-handle">@FakeDonaldTrump</span>
+            </div>
+            <div class="tweet-main" [innerHTML]="tweet.text">
+                <!-- {{tweet.text}} -->
+            </div>
+            <div class="tweet-footer">
+                <i class="fa fa-thumbs-up" aria-hidden="true"></i> {{tweet.likes}}
+                <div class="date-container">
+                    <span class="tweet-date">{{tweet.date}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+</div>
+
